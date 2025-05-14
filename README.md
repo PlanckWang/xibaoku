@@ -1,6 +1,6 @@
-# 西宝库项目
+# 细胞库项目
 
-西宝库是一个基于JavaFX和Spring Boot的细胞库管理系统。
+细胞库是一个基于JavaFX和Spring Boot的细胞库管理系统。
 
 ## 项目技术栈
 
