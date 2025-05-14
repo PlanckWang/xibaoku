@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.MaterialReturnRecordController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="物料退库记录管理" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="returnRecordTableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="recordIdColumn" text="记录ID" prefWidth="60">
+                <cellValueFactory><PropertyValueFactory property="recordId"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="materialNameColumn" text="物料名称" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="materialName"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="materialCodeColumn" text="物料代码" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="materialCode"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="returnQuantityColumn" text="退库数量" prefWidth="80">
+                <cellValueFactory><PropertyValueFactory property="returnQuantity"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="unitPriceColumn" text="退库单价" prefWidth="80">
+                <cellValueFactory><PropertyValueFactory property="unitPrice"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="totalAmountColumn" text="总金额" prefWidth="90">
+                <cellValueFactory><PropertyValueFactory property="totalAmount"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="returnDateColumn" text="退库日期" prefWidth="140">
+                <cellValueFactory><PropertyValueFactory property="returnDate"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="reasonColumn" text="退库原因" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="reason"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="operatorNameColumn" text="操作员" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="operatorUserName"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="relatedInboundRecordIdColumn" text="关联入库ID" prefWidth="80">
+                <cellValueFactory><PropertyValueFactory property="relatedInboundRecordId"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="notesColumn" text="备注" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="notes"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="createdAtColumn" text="创建时间" prefWidth="140">
+                <cellValueFactory><PropertyValueFactory property="createdAt"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <GridPane hgap="10" vgap="5">
+        <Label text="物料:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="materialComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200" promptText="选择物料"/>
+        
+        <Label text="退库数量:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="returnQuantityField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200"/>
+
+        <Label text="退库单价:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="unitPriceField" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="200" promptText="(可选,默认物料当前单价)"/>
+
+        <Label text="退库原因:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <TextField fx:id="reasonField" GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="200"/>
+
+        <Label text="关联入库ID:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <TextField fx:id="relatedInboundRecordIdField" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="200" promptText="(可选)"/>
+
+        <Label text="退库日期:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <DatePicker fx:id="returnDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="3" prefWidth="200"/>
+        
+        <Label text="操作员:" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+        <ComboBox fx:id="operatorUserComboBox" GridPane.rowIndex="0" GridPane.columnIndex="5" prefWidth="180" promptText="选择操作员"/>
+
+        <Label text="备注:" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+        <TextArea fx:id="notesArea" GridPane.rowIndex="1" GridPane.columnIndex="5" GridPane.rowSpan="2" prefWidth="180" prefHeight="60"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="新增退库记录" onAction="#handleAddReturnRecord"/>
+        <Button text="删除记录" onAction="#handleDeleteReturnRecord"/> 
+        <Button text="刷新列表" onAction="#handleRefreshReturnRecords"/>
+    </HBox>
+    
+    <Label fx:id="statusLabel" style="-fx-text-fill: green;"/>
+
+VBox>
+

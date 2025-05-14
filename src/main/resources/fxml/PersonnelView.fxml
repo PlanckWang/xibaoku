@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.PersonnelController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="人员管理" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="personnelTableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="personnelIdColumn" text="人员ID" prefWidth="60">
+                <cellValueFactory><PropertyValueFactory property="personnelId"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="employeeIdColumn" text="工号" prefWidth="80">
+                <cellValueFactory><PropertyValueFactory property="employeeId"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="fullNameColumn" text="姓名 (用户)" prefWidth="120">
+                 <cellValueFactory><PropertyValueFactory property="userFullName"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="usernameColumn" text="用户名 (用户)" prefWidth="100">
+                 <cellValueFactory><PropertyValueFactory property="userUsername"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="positionColumn" text="职位" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="position"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="departmentNameColumn" text="所属部门" prefWidth="120">
+                <cellValueFactory><PropertyValueFactory property="userDepartmentName"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="institutionNameColumn" text="所属机构" prefWidth="120">
+                <cellValueFactory><PropertyValueFactory property="userInstitutionName"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="hireDateColumn" text="入职日期" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="hireDate"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="userActiveColumn" text="用户状态" prefWidth="80">
+                <cellValueFactory><PropertyValueFactory property="userActiveStatus"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <GridPane hgap="10" vgap="5">
+        <Label text="工号:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="employeeIdField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="150"/>
+        
+        <Label text="职位:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="positionField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="150"/>
+
+        <Label text="入职日期:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="hireDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="150"/>
+
+        <Label text="备注:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextArea fx:id="notesArea" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="150" prefHeight="60"/>
+
+        <Label text="--- 用户信息 ---" GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.columnSpan="2" style="-fx-font-weight: bold;"/>
+        
+        <Label text="姓名:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <TextField fx:id="fullNameField" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="150"/>
+
+        <Label text="用户名:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        <TextField fx:id="usernameField" GridPane.rowIndex="2" GridPane.columnIndex="3" prefWidth="150"/>
+
+        <Label text="密码:" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+        <PasswordField fx:id="passwordField" GridPane.rowIndex="3" GridPane.columnIndex="3" prefWidth="150" promptText="留空则不修改"/>
+
+        <Label text="邮箱:" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
+        <TextField fx:id="emailField" GridPane.rowIndex="4" GridPane.columnIndex="3" prefWidth="150"/>
+
+        <Label text="电话:" GridPane.rowIndex="5" GridPane.columnIndex="2"/>
+        <TextField fx:id="phoneField" GridPane.rowIndex="5" GridPane.columnIndex="3" prefWidth="150"/>
+
+        <Label text="所属机构:" GridPane.rowIndex="1" GridPane.columnIndex="4"/>
+        <ComboBox fx:id="institutionComboBox" GridPane.rowIndex="1" GridPane.columnIndex="5" prefWidth="180"/>
+
+        <Label text="所属部门:" GridPane.rowIndex="2" GridPane.columnIndex="4"/>
+        <ComboBox fx:id="departmentComboBox" GridPane.rowIndex="2" GridPane.columnIndex="5" prefWidth="180"/>
+
+        <Label text="角色:" GridPane.rowIndex="3" GridPane.columnIndex="4"/>
+        <TextField fx:id="roleField" GridPane.rowIndex="3" GridPane.columnIndex="5" prefWidth="180" promptText="例如: ADMIN, USER"/>
+
+        <Label text="用户状态:" GridPane.rowIndex="4" GridPane.columnIndex="4"/>
+        <CheckBox fx:id="activeCheckBox" text="激活" GridPane.rowIndex="4" GridPane.columnIndex="5"/>
+
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="新增人员" onAction="#handleAddPersonnel"/>
+        <Button text="修改人员" onAction="#handleUpdatePersonnel"/>
+        <Button text="删除人员" onAction="#handleDeletePersonnel"/>
+        <Button text="刷新列表" onAction="#handleRefreshPersonnel"/>
+    </HBox>
+    
+    <Label fx:id="statusLabel" style="-fx-text-fill: green;"/>
+
+VBox>
+

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.HealthRecordController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="健康管理" />
+                <HBox spacing="10.0">
+                    <children>
+                        <TextField fx:id="searchPatientIdField" promptText="按患者ID搜索" />
+                        <DatePicker fx:id="searchRecordDatePicker" promptText="按记录日期搜索" />
+                        <TextField fx:id="searchRecordTypeField" promptText="按记录类型搜索" />
+                        <Button onAction="#handleSearch" text="搜索" />
+                        <Button onAction="#handleRefresh" text="刷新" />
+                    </children>
+                </HBox>
+                <TableView fx:id="healthRecordTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="recordIdColumn" prefWidth="50" text="ID" />
+                        <TableColumn fx:id="patientIdColumn" prefWidth="80" text="患者ID" />
+                        <TableColumn fx:id="recordDateColumn" prefWidth="100" text="记录日期" />
+                        <TableColumn fx:id="recordTypeColumn" prefWidth="120" text="记录类型" />
+                        <TableColumn fx:id="descriptionColumn" prefWidth="200" text="描述" />
+                        <TableColumn fx:id="heightColumn" prefWidth="60" text="身高(cm)" />
+                        <TableColumn fx:id="weightColumn" prefWidth="60" text="体重(kg)" />
+                        <TableColumn fx:id="bloodPressureColumn" prefWidth="80" text="血压" />
+                        <TableColumn fx:id="heartRateColumn" prefWidth="70" text="心率(bpm)" />
+                        <TableColumn fx:id="bloodSugarColumn" prefWidth="80" text="血糖(mmol/L)" />
+                        <TableColumn fx:id="recordedByColumn" prefWidth="80" text="记录人ID" />
+                        <TableColumn fx:id="createdAtColumn" prefWidth="140" text="创建时间" />
+                        <TableColumn fx:id="updatedAtColumn" prefWidth="140" text="更新时间" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button onAction="#handleAddRecord" text="新增记录" />
+                        <Button onAction="#handleEditRecord" text="编辑记录" />
+                        <Button onAction="#handleDeleteRecord" text="删除记录" />
+                    </children>
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </HBox>
+                <AnchorPane fx:id="formPane" visible="false" managed="false" style="-fx-border-color: lightgray; -fx-padding: 10px;">
+                    <VBox spacing="8">
+                        <Label fx:id="formTitleLabel" style="-fx-font-weight: bold;" text="健康记录信息" />
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="记录ID:" />
+                            <TextField fx:id="recordIdField" disable="true" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="患者ID:" />
+                            <TextField fx:id="formPatientIdField" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="记录日期:" />
+                            <DatePicker fx:id="formRecordDatePicker" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="记录类型:" />
+                            <TextField fx:id="formRecordTypeField" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="描述:" />
+                            <TextArea fx:id="formDescriptionArea" prefHeight="40.0" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="身高(cm):" />
+                            <TextField fx:id="formHeightField" HBox.hgrow="ALWAYS" />
+                            <Label minWidth="100" text="体重(kg):" />
+                            <TextField fx:id="formWeightField" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="血压:" />
+                            <TextField fx:id="formBloodPressureField" HBox.hgrow="ALWAYS" />
+                            <Label minWidth="100" text="心率(bpm):" />
+                            <TextField fx:id="formHeartRateField" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="血糖(mmol/L):" />
+                            <TextField fx:id="formBloodSugarField" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="症状:" />
+                            <TextArea fx:id="formSymptomsArea" prefHeight="40.0" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="诊断:" />
+                            <TextArea fx:id="formDiagnosisArea" prefHeight="40.0" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="治疗方案:" />
+                            <TextArea fx:id="formTreatmentPlanArea" prefHeight="40.0" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="用药:" />
+                            <TextArea fx:id="formMedicationArea" prefHeight="40.0" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Label minWidth="100" text="备注:" />
+                            <TextArea fx:id="formNotesArea" prefHeight="40.0" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox spacing="10" fx:id="auditFieldsContainer" visible="false" managed="false">
+                             <Label minWidth="100" text="记录人ID:" />
+                             <TextField fx:id="formRecordedByField" HBox.hgrow="ALWAYS" />
+                             <Label minWidth="100" text="创建时间:" />
+                             <TextField fx:id="formCreatedAtField" disable="true" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                         <HBox spacing="10" fx:id="auditFieldsContainer2" visible="false" managed="false">
+                             <Label minWidth="100" text="更新时间:" />
+                             <TextField fx:id="formUpdatedAtField" disable="true" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                            <Button onAction="#handleSaveRecord" text="保存" />
+                            <Button onAction="#handleCancelForm" text="取消" />
+                        </HBox>
+                    </VBox>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

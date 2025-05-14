@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.MainController">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="文件">
+                    <items>
+                        <MenuItem text="退出" onAction="#handleExitAction"/>
+                    </items>
+                </Menu>
+                <Menu text="基础设置">
+                    <items>
+                        <MenuItem text="机构管理" onAction="#handleOpenInstitutionManagement"/>
+                        <MenuItem text="部门管理" onAction="#handleOpenDepartmentManagement"/>
+                        <MenuItem text="人员管理" onAction="#handleOpenPersonnelManagement"/>
+                        <MenuItem text="产品管理" onAction="#handleOpenProductManagement"/>
+                        <MenuItem text="修改密码" onAction="#handleChangePassword"/>
+                    </items>
+                </Menu>
+                <Menu text="物料管理">
+                    <items>
+                        <MenuItem text="物料列表" onAction="#handleOpenMaterialList"/>
+                        <MenuItem text="入库记录" onAction="#handleOpenInboundRecords"/>
+                        <MenuItem text="出库记录" onAction="#handleOpenOutboundRecords"/>
+                        <MenuItem text="退库记录" onAction="#handleOpenReturnRecords"/>
+                    </items>
+                </Menu>
+                <!-- Add other main menus based on the website structure -->
+                <Menu text="样本订单">
+                    <items>
+                        <MenuItem text="储户管理" onAction="#handleOpenCustomerManagement"/>
+                        <MenuItem text="订单列表" onAction="#handleOpenOrderList"/>
+                        <MenuItem text="订单审核" onAction="#handleOpenOrderAudit"/>
+                    </items>
+                </Menu>
+                 <Menu text="储存合同">
+                    <items>
+                        <MenuItem text="合同列表" onAction="#handleOpenContractList"/>
+                    </items>
+                </Menu>
+                <Menu text="帮助">
+                    <items>
+                        <MenuItem text="关于" onAction="#handleAboutAction"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="欢迎使用广西生科·创新诊疗中心管理系统" style="-fx-font-size: 18px;"/>
+            <Label fx:id="statusMessageLabel"/>
+            <!-- Content area for different views will be loaded here -->
+        </VBox>
+    </center>
+</BorderPane>
+

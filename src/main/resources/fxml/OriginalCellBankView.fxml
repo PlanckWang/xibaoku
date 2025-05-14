@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.OriginalCellBankController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="搜索细胞系名称:" />
+                        <TextField fx:id="searchCellLineNameField" prefWidth="200.0" promptText="输入细胞系名称" />
+                        <Label text="搜索状态:" />
+                        <TextField fx:id="searchStatusField" prefWidth="150.0" promptText="输入状态" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#handleSearch" text="搜索" />
+                        <Button fx:id="resetButton" mnemonicParsing="false" onAction="#handleResetSearch" text="重置" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+                <TableView fx:id="originalCellBankTableView" prefHeight="350.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="bankIdColumn" prefWidth="150.0" text="细胞库编号" />
+                        <TableColumn fx:id="sampleIdColumn" prefWidth="120.0" text="样本ID" />
+                        <TableColumn fx:id="cellLineNameColumn" prefWidth="150.0" text="细胞系名称" />
+                        <TableColumn fx:id="cellTypeColumn" prefWidth="100.0" text="细胞类型" />
+                        <TableColumn fx:id="passageNumberColumn" prefWidth="80.0" text="传代次数" />
+                        <TableColumn fx:id="cryopreservationDateColumn" prefWidth="120.0" text="冻存日期" />
+                        <TableColumn fx:id="numberOfVialsColumn" prefWidth="80.0" text="冻存管数" />
+                        <TableColumn fx:id="storageLocationColumn" prefWidth="150.0" text="存储位置" />
+                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="状态" />
+                        <TableColumn fx:id="operatorColumn" prefWidth="100.0" text="操作员" />
+                    </columns>
+                    <placeholder>
+                        <Label text="没有原始细胞库数据可显示，请尝试搜索或添加新记录。" />
+                    </placeholder>
+                </TableView>
+                <GridPane hgap="10.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="细胞库编号:" GridPane.rowIndex="0" />
+                        <TextField fx:id="bankIdField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <Label text="关联样本ID:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <TextField fx:id="sampleRegistrationIdField" promptText="输入已登记的样本ID" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                        <Label text="细胞系名称:" GridPane.rowIndex="1" />
+                        <TextField fx:id="cellLineNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="细胞类型:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="cellTypeField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                        <Label text="传代次数:" GridPane.rowIndex="2" />
+                        <TextField fx:id="passageNumberField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="冻存日期:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <DatePicker fx:id="cryopreservationDateField" GridPane.columnIndex="3" GridPane.rowIndex="2" prefWidth="250.0"/>
+
+                        <Label text="冻存管数:" GridPane.rowIndex="3" />
+                        <TextField fx:id="numberOfVialsField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="每管细胞数:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="cellsPerVialField" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+
+                        <Label text="每管体积:" GridPane.rowIndex="4" />
+                        <TextField fx:id="volumePerVialField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label text="体积单位:" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <TextField fx:id="volumeUnitField" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+
+                        <Label text="冻存液类型:" GridPane.rowIndex="5" />
+                        <TextField fx:id="cryopreservationMediumField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="存储位置:" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <TextField fx:id="storageLocationField" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+
+                        <Label text="操作员:" GridPane.rowIndex="6" />
+                        <TextField fx:id="operatorField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="质控状态:" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <TextField fx:id="qualityControlStatusField" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+
+                        <Label text="支原体检测:" GridPane.rowIndex="7" />
+                        <TextField fx:id="mycoplasmaTestResultField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label text="无菌检测:" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <TextField fx:id="sterilityTestResultField" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+
+                        <Label text="复苏后活率(%):" GridPane.rowIndex="8" />
+                        <TextField fx:id="viabilityPostThawField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Label text="状态:" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <TextField fx:id="statusField" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+
+                        <Label text="备注:" GridPane.rowIndex="9" />
+                        <TextArea fx:id="remarksArea" prefHeight="50.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="9" />
+
+                    </children>
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </GridPane>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="newButton" mnemonicParsing="false" onAction="#handleNew" text="新增" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSave" text="保存" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDelete" text="删除" />
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#handleClearFields" text="清空表单" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

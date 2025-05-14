@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.SampleRegistrationController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddRegistration" text="新增登记" />
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditRegistration" text="修改登记" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteRegistration" text="删除登记" />
+                        <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefreshRegistrations" text="刷新列表" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+                <TableView fx:id="registrationTableView" prefHeight="350.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="registrationIdColumn" prefWidth="70.0" text="登记ID" />
+                        <TableColumn fx:id="sampleCodeColumn" prefWidth="120.0" text="样本编号" />
+                        <TableColumn fx:id="customerColumn" prefWidth="150.0" text="储户" />
+                        <TableColumn fx:id="orderColumn" prefWidth="120.0" text="关联订单号" />
+                        <TableColumn fx:id="sampleTypeColumn" prefWidth="100.0" text="样本类型" />
+                        <TableColumn fx:id="collectionDateColumn" prefWidth="120.0" text="采集日期" />
+                        <TableColumn fx:id="collectorColumn" prefWidth="100.0" text="采集人" />
+                        <TableColumn fx:id="collectionSiteColumn" prefWidth="120.0" text="采集地点" />
+                        <TableColumn fx:id="statusColumn" prefWidth="80.0" text="状态" />
+                        <TableColumn fx:id="createdAtColumn" prefWidth="120.0" text="登记时间" />
+                        <TableColumn fx:id="notesColumn" prefWidth="150.0" text="备注" />
+                    </columns>
+                </TableView>
+                <GridPane hgap="10.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="380.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="380.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="样本编号:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                        <TextField fx:id="sampleCodeField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                        <Label text="储户:" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="customerComboBox" prefWidth="380.0" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="选择储户" />
+
+                        <Label text="关联订单:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                        <ComboBox fx:id="orderComboBox" prefWidth="380.0" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="选择订单 (可选)" />
+                        <Label text="样本类型:" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                        <TextField fx:id="sampleTypeField" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+
+                        <Label text="采集日期:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                        <DatePicker fx:id="collectionDatePicker" prefWidth="380.0" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                        <Label text="采集人:" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                        <TextField fx:id="collectorField" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+                        <Label text="采集地点:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                        <TextField fx:id="collectionSiteField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                        <Label text="状态:" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="statusComboBox" prefWidth="380.0" GridPane.rowIndex="3" GridPane.columnIndex="3" promptText="选择状态" />
+                        
+                        <Label text="备注:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.valignment="TOP" />
+                        <TextArea fx:id="notesArea" prefHeight="50.0" GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowSpan="2"/>
+
+                    </children>
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </GridPane>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveRegistration" text="保存" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelRegistration" text="取消" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

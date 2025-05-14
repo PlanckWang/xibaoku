@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.InstitutionController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="机构管理" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="institutionTableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50">
+                <cellValueFactory><PropertyValueFactory property="institutionId"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="nameColumn" text="机构名称" prefWidth="200">
+                <cellValueFactory><PropertyValueFactory property="institutionName"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="addressColumn" text="地址" prefWidth="250">
+                <cellValueFactory><PropertyValueFactory property="address"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="contactPersonColumn" text="联系人" prefWidth="100">
+                <cellValueFactory><PropertyValueFactory property="contactPerson"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="contactPhoneColumn" text="联系电话" prefWidth="120">
+                <cellValueFactory><PropertyValueFactory property="contactPhone"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="createdAtColumn" text="创建时间" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="createdAt"/></cellValueFactory>
+            </TableColumn>
+             <TableColumn fx:id="updatedAtColumn" text="更新时间" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="updatedAt"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <GridPane hgap="10" vgap="5">
+        <Label text="机构名称:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="nameField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200"/>
+        
+        <Label text="地址:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="addressField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200"/>
+
+        <Label text="联系人:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <TextField fx:id="contactPersonField" GridPane.rowIndex="0" GridPane.columnIndex="3" prefWidth="150"/>
+
+        <Label text="联系电话:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <TextField fx:id="contactPhoneField" GridPane.rowIndex="1" GridPane.columnIndex="3" prefWidth="150"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="新增机构" onAction="#handleAddInstitution"/>
+        <Button text="修改机构" onAction="#handleUpdateInstitution"/>
+        <Button text="删除机构" onAction="#handleDeleteInstitution"/>
+        <Button text="刷新列表" onAction="#handleRefreshInstitutions"/>
+    </HBox>
+    
+    <Label fx:id="statusLabel" style="-fx-text-fill: green;"/>
+
+VBox>
+

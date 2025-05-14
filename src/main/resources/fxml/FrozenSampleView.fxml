@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.FrozenSampleController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddFrozenSample" text="新增冻存记录" />
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditFrozenSample" text="修改冻存记录" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteFrozenSample" text="删除冻存记录" />
+                        <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefreshFrozenSamples" text="刷新列表" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+                <TableView fx:id="frozenSampleTableView" prefHeight="400.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="frozenSampleIdColumn" prefWidth="70.0" text="冻存ID" />
+                        <TableColumn fx:id="samplePreparationColumn" prefWidth="150.0" text="关联制备(ID)" />
+                        <TableColumn fx:id="operatorColumn" prefWidth="100.0" text="操作员" />
+                        <TableColumn fx:id="frozenDateColumn" prefWidth="120.0" text="冻存日期" />
+                        <TableColumn fx:id="storageLocationColumn" prefWidth="150.0" text="冻存位置" />
+                        <TableColumn fx:id="cryoprotectantColumn" prefWidth="120.0" text="保护剂" />
+                        <TableColumn fx:id="volumeColumn" prefWidth="70.0" text="体积" />
+                        <TableColumn fx:id="unitColumn" prefWidth="70.0" text="单位" />
+                        <TableColumn fx:id="cellCountPerUnitColumn" prefWidth="100.0" text="细胞数/单位" />
+                        <TableColumn fx:id="passageNumberColumn" prefWidth="80.0" text="传代次数" />
+                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="状态" />
+                        <TableColumn fx:id="createdAtColumn" prefWidth="120.0" text="创建时间" />
+                        <TableColumn fx:id="updatedAtColumn" prefWidth="120.0" text="更新时间" />
+                        <TableColumn fx:id="notesColumn" prefWidth="150.0" text="备注" />
+                    </columns>
+                </TableView>
+                <GridPane hgap="10.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="380.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="380.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="380.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="关联制备记录:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                        <ComboBox fx:id="samplePreparationComboBox" prefWidth="380.0" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="选择制备记录" />
+                        <Label text="操作员:" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="operatorComboBox" prefWidth="380.0" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="选择操作员" />
+                        <Label text="状态:" GridPane.rowIndex="0" GridPane.columnIndex="4" />
+                        <ComboBox fx:id="statusComboBox" prefWidth="380.0" GridPane.rowIndex="0" GridPane.columnIndex="5" promptText="选择状态" />
+
+                        <Label text="冻存日期:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                        <DatePicker fx:id="frozenDatePicker" prefWidth="380.0" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                        <Label text="冻存位置:" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                        <TextField fx:id="storageLocationField" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+                        <Label text="冻存保护剂:" GridPane.rowIndex="1" GridPane.columnIndex="4" />
+                        <TextField fx:id="cryoprotectantField" GridPane.rowIndex="1" GridPane.columnIndex="5" />
+
+                        <Label text="体积:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                        <TextField fx:id="volumeField" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                        <Label text="单位:" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                        <TextField fx:id="unitField" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+                        <Label text="细胞数/单位:" GridPane.rowIndex="2" GridPane.columnIndex="4" />
+                        <TextField fx:id="cellCountPerUnitField" GridPane.rowIndex="2" GridPane.columnIndex="5" />
+
+                        <Label text="传代次数:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                        <TextField fx:id="passageNumberField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                        
+                        <Label text="备注:" GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.valignment="TOP" />
+                        <TextArea fx:id="notesArea" prefHeight="50.0" GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="5" />
+
+                    </children>
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </GridPane>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveFrozenSample" text="保存" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelFrozenSample" text="取消" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

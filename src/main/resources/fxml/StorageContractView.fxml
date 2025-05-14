@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.StorageContractController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAddContract" text="新增合同" />
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEditContract" text="修改合同" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDeleteContract" text="删除合同" />
+                        <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#handleRefreshContracts" text="刷新列表" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+                <TableView fx:id="contractTableView" prefHeight="350.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="contractIdColumn" prefWidth="70.0" text="合同ID" />
+                        <TableColumn fx:id="contractNumberColumn" prefWidth="130.0" text="合同号" />
+                        <TableColumn fx:id="customerColumn" prefWidth="150.0" text="储户" />
+                        <TableColumn fx:id="orderColumn" prefWidth="120.0" text="关联订单号" />
+                        <TableColumn fx:id="contractSignDateColumn" prefWidth="100.0" text="签订日期" />
+                        <TableColumn fx:id="contractStartDateColumn" prefWidth="100.0" text="开始日期" />
+                        <TableColumn fx:id="contractEndDateColumn" prefWidth="100.0" text="结束日期" />
+                        <TableColumn fx:id="storageFeeColumn" prefWidth="90.0" text="储存费用" />
+                        <TableColumn fx:id="paymentStatusColumn" prefWidth="90.0" text="付款状态" />
+                        <TableColumn fx:id="filePathColumn" prefWidth="150.0" text="文件路径" />
+                        <TableColumn fx:id="createdAtColumn" prefWidth="120.0" text="创建时间" />
+                    </columns>
+                </TableView>
+                <GridPane hgap="10.0" vgap="5.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="380.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="380.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="合同号:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                        <TextField fx:id="contractNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                        <Label text="储户:" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="customerComboBox" prefWidth="380.0" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="选择储户" />
+
+                        <Label text="关联订单:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                        <ComboBox fx:id="orderComboBox" prefWidth="380.0" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="选择订单 (可选)" />
+                        <Label text="签订日期:" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                        <DatePicker fx:id="contractSignDatePicker" prefWidth="380.0" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+
+                        <Label text="开始日期:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                        <DatePicker fx:id="contractStartDatePicker" prefWidth="380.0" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                        <Label text="结束日期:" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+                        <DatePicker fx:id="contractEndDatePicker" prefWidth="380.0" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+                        <Label text="储存费用:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                        <TextField fx:id="storageFeeField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                        <Label text="付款状态:" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="paymentStatusComboBox" prefWidth="380.0" GridPane.rowIndex="3" GridPane.columnIndex="3" promptText="选择付款状态" />
+
+                        <Label text="文件路径:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                        <TextField fx:id="filePathField" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+                        <!-- Add a browse button here if needed later -->
+
+                        <Label text="合同条款:" GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.valignment="TOP" />
+                        <TextArea fx:id="contractTermsArea" prefHeight="50.0" GridPane.rowIndex="5" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+
+                    </children>
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </GridPane>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveContract" text="保存" />
+                        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancelContract" text="取消" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

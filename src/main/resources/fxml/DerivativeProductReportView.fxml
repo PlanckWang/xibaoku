@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.DerivativeProductReportController">
+    <children>
+        <VBox spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="报表类型:" />
+                        <ComboBox fx:id="reportTypeComboBox" prefWidth="250.0" promptText="选择报表类型" />
+                        <Label text="开始日期:" />
+                        <DatePicker fx:id="startDatePicker" prefWidth="150.0" />
+                        <Label text="结束日期:" />
+                        <DatePicker fx:id="endDatePicker" prefWidth="150.0" />
+                        <Button fx:id="generateReportButton" mnemonicParsing="false" onAction="#handleGenerateReport" text="生成报表" />
+                        <Button fx:id="exportReportButton" mnemonicParsing="false" onAction="#handleExportReport" text="导出报表(待实现)" />
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+                <TableView fx:id="reportTableView" prefHeight="600.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="reportNameColumn" prefWidth="180.0" text="报表名称" />
+                        <TableColumn fx:id="derivativeProductNameColumn" prefWidth="180.0" text="衍生品名称" />
+                        <TableColumn fx:id="derivativeProductTypeColumn" prefWidth="150.0" text="衍生品类型" />
+                        <TableColumn fx:id="sourceSampleIdColumn" prefWidth="120.0" text="来源样本ID" />
+                        <TableColumn fx:id="sourceSampleTypeColumn" prefWidth="120.0" text="来源样本类型" />
+                        <TableColumn fx:id="quantityProducedColumn" prefWidth="100.0" text="生产数量/批次" />
+                        <TableColumn fx:id="totalAmountColumn" prefWidth="100.0" text="总量" />
+                        <TableColumn fx:id="amountUnitColumn" prefWidth="80.0" text="单位" />
+                        <TableColumn fx:id="creationDateStartColumn" prefWidth="110.0" text="统计开始日期" />
+                        <TableColumn fx:id="creationDateEndColumn" prefWidth="110.0" text="统计结束日期" />
+                        <TableColumn fx:id="createdByColumn" prefWidth="120.0" text="创建人/部门" />
+                        <TableColumn fx:id="detailsColumn" prefWidth="200.0" text="详情/备注" />
+                    </columns>
+                    <placeholder>
+                        <Label text="请选择报表类型和统计周期，然后点击“生成报表”" />
+                    </placeholder>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
+

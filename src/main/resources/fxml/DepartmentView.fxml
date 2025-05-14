@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.guangxishengkejavafx.controller.DepartmentController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="部门管理" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="选择机构:"/>
+        <ComboBox fx:id="institutionComboBox" prefWidth="200" onAction="#handleInstitutionSelection"/>
+    </HBox>
+
+    <TableView fx:id="departmentTableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50">
+                <cellValueFactory><PropertyValueFactory property="departmentId"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="nameColumn" text="部门名称" prefWidth="200">
+                <cellValueFactory><PropertyValueFactory property="departmentName"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="descriptionColumn" text="描述" prefWidth="250">
+                <cellValueFactory><PropertyValueFactory property="description"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="createdAtColumn" text="创建时间" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="createdAt"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="updatedAtColumn" text="更新时间" prefWidth="150">
+                <cellValueFactory><PropertyValueFactory property="updatedAt"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <GridPane hgap="10" vgap="5">
+        <Label text="部门名称:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="departmentNameField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200"/>
+        
+        <Label text="描述:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="descriptionField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="新增部门" onAction="#handleAddDepartment"/>
+        <Button text="修改部门" onAction="#handleUpdateDepartment"/>
+        <Button text="删除部门" onAction="#handleDeleteDepartment"/>
+        <Button text="刷新列表" onAction="#handleRefreshDepartments"/>
+    </HBox>
+    
+    <Label fx:id="statusLabel" style="-fx-text-fill: green;"/>
+
+VBox>
+
