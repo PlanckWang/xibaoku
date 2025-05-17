@@ -197,7 +197,8 @@ public class MainController {
 
     @FXML
     void handleOpenWorkingCellBank(ActionEvent event) { // Added for WorkingCellBank
-        loadView("/fxml/WorkingCellBankView.fxml", "工作细胞库");
+        // Corrected FXML path for working cell bank view
+        loadView("/fxml/CellBankView.fxml", "工作细胞库");
     }
 
     @FXML
