@@ -99,8 +99,9 @@ public class CellBankController {
             return new javafx.beans.property.SimpleStringProperty(date != null ? date.format(dateTimeFormatter) : "");
         });
 
-        loadWorkingCellBanks();
-        workingCellBankTable.setItems(workingCellBankData);
+        // Load and display the cell banks of type "\u5de5\u4f5c\u7ec6\u80de\u5e93"
+        loadCellBanks();
+        cellBankTable.setItems(cellBankData);
         hideForm();
     }
 
